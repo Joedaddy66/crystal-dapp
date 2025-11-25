@@ -14,7 +14,7 @@ export default function App() {
 
     const newCrystal = generateCrystal(Number(seed));
     setCrystals(getCrystals());
-    setStatus(✨ Crystal #\ created with seed \);
+    setStatus(`✨ Crystal #${newCrystal.id} created with seed ${newCrystal.seed}`);
     setSeed("");
   };
 
