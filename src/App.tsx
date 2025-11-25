@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { generateCrystal, getCrystals, Crystal } from "./lib/CrystalGarden";
+import CrystalVisual from "./components/CrystalVisual";
 
 export default function App() {
   const [seed, setSeed] = useState("");
@@ -35,11 +36,24 @@ export default function App() {
 
       <p style={{ marginTop: "1rem" }}>{status}</p>
 
-      <ul>
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+        gap: '1.5rem',
+        marginTop: '2rem'
+      }}>
         {crystals.map((c) => (
-          <li key={c.id}>🔮 Crystal #{c.id} — Seed: {c.seed}</li>
+          <div key={c.id} style={{ textAlign: 'center' }}>
+            <CrystalVisual seed={c.seed} size={200} />
+            <div style={{ marginTop: '0.5rem', fontSize: '0.9rem' }}>
+              🔮 Crystal #{c.id}
+            </div>
+            <div style={{ fontSize: '0.8rem', opacity: 0.7 }}>
+              Seed: {c.seed}
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 }
